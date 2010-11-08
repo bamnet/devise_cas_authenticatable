@@ -34,7 +34,7 @@ module Devise
       def service_url
         u = URI.parse(request.url)
         u.query = nil
-        u.path.gsub!(/\/\w*$/,"")
+        u.path.gsub!(/\/\w*$/,"") if u.path =~ /#{mapping.fullpath}\/(\w*)$/
         u.to_s
       end
   
